@@ -14,12 +14,19 @@ Chapter.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     number: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    book_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "book",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
