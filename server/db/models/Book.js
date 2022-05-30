@@ -14,21 +14,21 @@ Book.init(
     },
     title: {
       type: DataTypes.STRING,
-      defaultValue: 'n/a',
-      allowNull: false
+      defaultValue: "n/a",
+      allowNull: false,
     },
     author: {
       type: DataTypes.STRING,
-      defaultValue: 'n/a',
-      allowNull: false
+      defaultValue: "n/a",
+      allowNull: false,
     },
     chapter_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'chapter',
-        key: 'id'
-      }
-    }
+        model: "chapter",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,

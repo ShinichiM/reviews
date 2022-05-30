@@ -13,24 +13,24 @@ Summary.init(
       autoIncrement: true,
     },
     notes: {
-       type: DataTypes.STRING,
-       defaultValue: 'n/a',
-       allowNull: false
+      type: DataTypes.STRING,
+      defaultValue: "n/a",
+      allowNull: false,
     },
     book_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'book',
-        key: 'id'
-      }
+        model: "book",
+        key: "id",
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id'
-      }
-    }
+        model: "user",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,

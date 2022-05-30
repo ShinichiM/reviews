@@ -14,7 +14,7 @@ Chapter.init(
     },
     title: {
       type: DataTypes.STRING,
-      defaultValue: 'n/a',
+      defaultValue: "n/a",
       allowNull: false,
     },
     number: {
