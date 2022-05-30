@@ -20,20 +20,6 @@ Book.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      } 
-    },
-    summary_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'summary',
-        key: 'id'
-      }
-    },
     chapter_id: {
       type: DataTypes.INTEGER,
       references: {
