@@ -12,6 +12,35 @@ Book.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      } 
+    },
+    summary_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'summary',
+        key: 'id'
+      }
+    },
+    chapter_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'chapter',
+        key: 'id'
+      }
+    }
   },
   {
     sequelize,
