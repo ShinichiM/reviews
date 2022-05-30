@@ -14,6 +14,7 @@ Summary.init(
     },
     notes: {
        type: DataTypes.STRING,
+       defaultValue: 'n/a',
        allowNull: false
     },
     book_id: {

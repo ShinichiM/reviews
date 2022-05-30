@@ -14,10 +14,12 @@ Book.init(
     },
     title: {
       type: DataTypes.STRING,
+      defaultValue: 'n/a',
       allowNull: false
     },
     author: {
       type: DataTypes.STRING,
+      defaultValue: 'n/a',
       allowNull: false
     },
     chapter_id: {
