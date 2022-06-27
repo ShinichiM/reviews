@@ -4,7 +4,7 @@ const bookData = [
     {
         id: 1,
         title: "book one",
-        author: "authoer one",
+        author: "author one",
         chapter_id: 1
     }
 ];

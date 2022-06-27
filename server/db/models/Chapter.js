@@ -17,10 +17,10 @@ Chapter.init(
       defaultValue: "n/a",
       allowNull: false,
     },
-    number: {
+    page_number: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
-      allowNull: false,
+      allowNull: true,
     },
     book_id: {
       type: DataTypes.INTEGER,
