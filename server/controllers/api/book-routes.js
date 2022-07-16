@@ -30,8 +30,8 @@ router.put("/:id", (req, res) => {
     }
   })
     .then((bookData) => {
-      if (bookData) {
-        res.json(bookData);
+      if (bookData[0]) {
+        res.json(bookData[0]);
       } else {
         res.status(404).json({ message: "No book found with this ID."});
         return;
