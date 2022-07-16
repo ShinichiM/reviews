@@ -17,7 +17,7 @@ router.put("/:id", (req, res) => {
     },
   })
     .then((userData) => {
-        console.log("++++++++++++++++++", userData)
+      console.log("++++++++++++++++++", userData);
       if (userData[0]) {
         res.json(userData[0]);
       } else {
@@ -43,6 +43,23 @@ router.post("/", (req, res) => {
     });
 });
 
-// router.delete();
+router.delete("/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((userData) => {
+      if (userData) {
+        res.json(userData);
+      } else {
+        res.status(404).json({ message: "No user found with this ID." });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
