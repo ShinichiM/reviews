@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  // if(req.sesison)
   Book.create({
     title: req.body.title,
     author: req.body.author,
