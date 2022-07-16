@@ -1,13 +1,25 @@
-const { Book, Chapter, Summary, User } = require("../models");
+const Book = require("../models/Book");
+const User = require("../models/User");
+const Summary = require("../models/Summary");
 
-User.hasMany(Summary, {
+User.hasMany(Book, {
+  foreignKey: "book_id",
+});
+
+Book.belongsTo(User, {
   foreignKey: "user_id",
 });
-Summary.belongsTo(User, {
-  foreignKey: "user_id",
+
+Book.hasMany(Summary, {
+  foreignKey: "summary_id",
 });
 
-Summary.belongsToMany(User, {
-  through: Book,
-  as: "",
+Summary.belongsTo(Book, {
+  foreignKey: "book_id",
 });
+
+module.exports = {
+  Book,
+  Summary,
+  User,
+};

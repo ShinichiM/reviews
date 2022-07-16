@@ -17,20 +17,17 @@ Summary.init(
       defaultValue: "n/a",
       allowNull: false,
     },
-    book_id: {
+    chapter: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "book",
-        key: "id",
-      },
+      allowNull: true
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
+    // book_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "book",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,

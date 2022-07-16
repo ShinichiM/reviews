@@ -14,7 +14,7 @@ Book.init(
     },
     title: {
       type: DataTypes.STRING,
-      defaultValue: "n/a",
+      // defaultValue: "n/a",
       allowNull: false,
     },
     author: {
@@ -22,13 +22,13 @@ Book.init(
       defaultValue: "n/a",
       allowNull: false,
     },
-    chapter_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "chapter",
-        key: "id",
-      },
-    },
+    // summary_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "summary",
+    //     key: "id"
+    //   }
+    // }
   },
   {
     sequelize,
