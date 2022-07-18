@@ -14,7 +14,7 @@ Summary.init(
     },
     notes: {
       type: DataTypes.STRING,
-      defaultValue: "n/a",
+      // defaultValue: "n/a",
       allowNull: false,
     },
     chapter: {
