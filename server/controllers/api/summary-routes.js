@@ -43,4 +43,21 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  Summary.destroy({ where: { id: req.params.id } })
+    .then((summaryData) => {
+      if (summaryData) {
+        res.json(summaryData);
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find summary with this ID." });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
