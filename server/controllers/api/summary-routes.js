@@ -22,4 +22,25 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  Summary.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((summaryData) => {
+      if (summaryData[0]) {
+        res.json(summaryData);
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find Summary with this ID." });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
