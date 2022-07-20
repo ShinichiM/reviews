@@ -1,19 +1,33 @@
 const router = require("express").Router();
-const { Summary } = require("../../db/models");
+const { Book, Summary } = require("../../db/models");
 
-router.get("/", (req, res) => {
-  Summary.findAll()
-    .then((summaryData) => res.json(summaryData))
+router.get("/:bookId", (req, res) => {
+  Summary.findAll({
+    where: {
+      book_id: req.params.bookId,
+    },
+    attributes: ["id", "notes", "chapter", "book_id"],
+    include: [
+      {
+        model: Book,
+        attributes: ["id", "title", "author"],
+      },
+    ],
+  })
+    .then((summaryData) => {
+      res.json(summaryData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/:bookId", (req, res) => {
   Summary.create({
     notes: req.body.notes,
     chapter: req.body.chapter,
+    book_id: req.params.bookId,
   })
     .then((summaryData) => res.json(summaryData))
     .catch((err) => {
@@ -22,10 +36,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:bookId/:summaryId", (req, res) => {
   Summary.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.params.summaryId,
+      book_id: req.params.bookId
     },
   })
     .then((summaryData) => {
@@ -43,8 +58,8 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
-  Summary.destroy({ where: { id: req.params.id } })
+router.delete("/:bookId/:summaryId", (req, res) => {
+  Summary.destroy({ where: { id: req.params.summaryId, book_id: req.params.bookId } })
     .then((summaryData) => {
       if (summaryData) {
         res.json(summaryData);
