@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Summary = require("../models/Summary");
 
 User.hasMany(Book, {
-  foreignKey: "book_id",
+  foreignKey: "user_id",
 });
 
 Book.belongsTo(User, {
@@ -11,12 +11,13 @@ Book.belongsTo(User, {
 });
 
 Book.hasMany(Summary, {
-  foreignKey: "summary_id",
+  foreignKey: "book_id",
 });
 
 Summary.belongsTo(Book, {
   foreignKey: "book_id",
 });
+
 
 module.exports = {
   Book,

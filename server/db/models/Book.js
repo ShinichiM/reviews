@@ -19,7 +19,7 @@ Book.init(
     },
     author: {
       type: DataTypes.STRING,
-      defaultValue: "n/a",
+      // defaultValue: "n/a",
       allowNull: false,
     },
     // summary_id: {

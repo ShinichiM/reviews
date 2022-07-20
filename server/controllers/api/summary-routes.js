@@ -29,6 +29,16 @@ router.post("/:bookId", (req, res) => {
     chapter: req.body.chapter,
     book_id: req.params.bookId,
   })
+    // .then((summarydata) =>
+    //   Book.update(
+    //     { book_id: req.params.bookId },
+    //     {
+    //       where: {
+    //         id: req.params.bookId,
+    //       },
+    //     }
+    //   )
+    // )
     .then((summaryData) => res.json(summaryData))
     .catch((err) => {
       console.log(err);
@@ -40,7 +50,7 @@ router.put("/:bookId/:summaryId", (req, res) => {
   Summary.update(req.body, {
     where: {
       id: req.params.summaryId,
-      book_id: req.params.bookId
+      book_id: req.params.bookId,
     },
   })
     .then((summaryData) => {
@@ -59,7 +69,9 @@ router.put("/:bookId/:summaryId", (req, res) => {
 });
 
 router.delete("/:bookId/:summaryId", (req, res) => {
-  Summary.destroy({ where: { id: req.params.summaryId, book_id: req.params.bookId } })
+  Summary.destroy({
+    where: { id: req.params.summaryId, book_id: req.params.bookId },
+  })
     .then((summaryData) => {
       if (summaryData) {
         res.json(summaryData);
