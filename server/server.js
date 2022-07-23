@@ -3,6 +3,7 @@ const sequelize = require("./db/connection");
 const app = express();
 const routes = require("./controllers");
 
+
 const PORT = process.env.PORT || 3001;
 
 // User authentication middleware

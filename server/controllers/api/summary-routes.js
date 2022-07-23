@@ -29,16 +29,6 @@ router.post("/:bookId", (req, res) => {
     chapter: req.body.chapter,
     book_id: req.params.bookId,
   })
-    // .then((summarydata) =>
-    //   Book.update(
-    //     { book_id: req.params.bookId },
-    //     {
-    //       where: {
-    //         id: req.params.bookId,
-    //       },
-    //     }
-    //   )
-    // )
     .then((summaryData) => res.json(summaryData))
     .catch((err) => {
       console.log(err);
