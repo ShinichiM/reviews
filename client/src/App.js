@@ -4,7 +4,7 @@ import Header from "./components/header";
 
 function App() {
   return (
-    <div className="textColorOne">
+    <div className="textColorOne headerSize">
       <Header />
       <Home />
     </div>
