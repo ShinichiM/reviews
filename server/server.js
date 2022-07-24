@@ -3,7 +3,6 @@ const sequelize = require("./db/connection");
 const app = express();
 const routes = require("./controllers");
 
-
 const PORT = process.env.PORT || 3001;
 
 // User authentication middleware
@@ -26,12 +25,12 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
-  res.header({"Access-Control-Allow-Origin": "*"});
+  res.header({ "Access-Control-Allow-Origin": "*" });
   next();
-})
+});
 app.use(routes);
 
 // Initialize Server instance
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now Listening on PORT: ${PORT}`));
 });

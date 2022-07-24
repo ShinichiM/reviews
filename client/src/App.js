@@ -1,11 +1,13 @@
 import "./App.css";
 import Home from "./pages/homepage";
-import Header from "./components/header";
+import Header from "./pages/header";
 
 function App() {
   return (
-    <div className="textColorOne headerSize">
-      <Header />
+    <div>
+      <div className="textColorOne headerSize">
+        <Header />
+      </div>
       <Home />
     </div>
   );

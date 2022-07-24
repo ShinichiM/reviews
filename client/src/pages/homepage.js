@@ -1,7 +1,8 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import Card from "../components/Card";
 
 const Home = () => {
-  const getBooks = async function (url) {
+  const getBookData = async function (url) {
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -12,17 +13,27 @@ const Home = () => {
     return response.json();
   };
 
-  const retrieve = function () {
-    getBooks("/api/book").then(data => console.log(data));
-    console.log("test");
-  };
-  // getBooks('http://localhost:3001/api/book').then(data => console.log(data));
+  const [bookData, setBookData] = useState([]);
 
-  return (
-    <div>
-      <button onClick={retrieve}>Click me</button>
-    </div>
-  );
+  useEffect(() => {
+    getBookData("api/book")
+      .then((data) => {
+        console.log("ithis is the data? 0- ", data);
+        const elements = data.map((item) => {
+          return <Card title={item.title} author={item.author} key={item.id} />;
+        });
+        setBookData(elements);
+
+        console.log("this is book data - ", bookData);
+      })
+      .catch(console.error);
+  }, []);
+
+  if (window.location.pathname === "/") {
+    return <div>testing {bookData}</div>;
+  } else {
+    return <div>ERROR</div>;
+  }
 };
 
 export default Home;
