@@ -64,8 +64,5 @@ ul li {
   padding: 3%;
 }
 
-.mobileMenu {
-  display: none;
-}
 @media screen and (min-width: 481px) {
 }

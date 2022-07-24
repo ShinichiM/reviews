@@ -10,7 +10,6 @@ const Header = () => {
     } else {
       setIsMenuOpen(true);
     }
-    console.log("it works");
   };
 
   return (
