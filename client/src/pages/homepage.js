@@ -1,7 +1,9 @@
 import { React, useEffect, useState } from "react";
 import Book from "../components/Book";
 
-const Home = () => {
+const Home = (props) => {
+  const [bookData, setBookData] = useState([]);
+
   const getBookData = async function (url) {
     const response = await fetch(url, {
       method: "GET",
@@ -12,8 +14,6 @@ const Home = () => {
     });
     return response.json();
   };
-
-  const [bookData, setBookData] = useState([]);
 
   useEffect(() => {
     getBookData("api/book")
@@ -26,6 +26,8 @@ const Home = () => {
               author={item.author}
               id={item.id}
               key={item.id}
+              setCurrentBookId={props.setCurrentBookId}
+              currentBookId={props.currentBookId}
             />
           );
         });

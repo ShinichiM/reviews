@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default class Book extends React.Component {
-  redirectToBook = () => {
-    console.log("test");
-    const bookId = this.props.id;
-    window.location.pathname = `/book/${bookId}`;
+  redirectToBook = (e) => {
+    this.props.setCurrentBookId(this.props.id);
+    window.location.pathname = `/book`;
   };
 
   render() {
