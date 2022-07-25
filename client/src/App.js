@@ -1,6 +1,7 @@
 import "./App.css";
-import Home from "./pages/homepage";
-import Header from "./pages/header";
+import Home from "./pages/Homepage";
+import Header from "./pages/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -8,7 +9,11 @@ function App() {
       <div className="textColorOne headerSize">
         <Header />
       </div>
-      <Home />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

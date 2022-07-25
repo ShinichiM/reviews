@@ -65,16 +65,16 @@ ul li {
 }
 
 /* Book Cards */
-.bookCard {
+.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 1rem auto;
   padding: 1rem;
+  width: 75%;
   margin-bottom: 1.6%;
   line-height: 1.4;
   font-family: sans-serif;
 }
-
 
 @media screen and (min-width: 481px) {
 }

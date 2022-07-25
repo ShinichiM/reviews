@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import Card from "../components/Card";
+import Book from "../components/Book";
 
 const Home = () => {
   const getBookData = async function (url) {
@@ -18,13 +18,20 @@ const Home = () => {
   useEffect(() => {
     getBookData("api/book")
       .then((data) => {
-        console.log("ithis is the data? 0- ", data);
+        // console.log("ithis is the data? 0- ", data);
         const elements = data.map((item) => {
-          return <Card title={item.title} author={item.author} key={item.id} />;
+          return (
+            <Book
+              title={item.title}
+              author={item.author}
+              id={item.id}
+              key={item.id}
+            />
+          );
         });
         setBookData(elements);
 
-        console.log("this is book data - ", bookData);
+        // console.log("this is book data - ", bookData);
       })
       .catch(console.error);
   }, []);
