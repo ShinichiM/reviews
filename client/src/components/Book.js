@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
 export default class Book extends React.Component {
+  // function() {} and ()=>{} ES6 sytax have diff 'this' context
+  // need to bind 'this' to functions in order to preserve object instantiation context
   constructor() {
     super();
     this.state = { hasUploadedImage: false };
