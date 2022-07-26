@@ -66,15 +66,29 @@ ul li {
 
 /* Book Cards */
 .card {
+  display: flex;
+  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 1rem auto;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 75%;
   margin-bottom: 1.6%;
-  line-height: 1.4;
+  /* line-height: 1.2; */
   font-family: sans-serif;
 }
 
+.bookImgContainer {
+  width: 30%;
+}
+
+.bookImg {
+  background-position: center;
+  background-size: cover;
+}
+
+.hideImg {
+  display: none;
+}
 @media screen and (min-width: 481px) {
 }
