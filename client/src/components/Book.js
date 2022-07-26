@@ -4,6 +4,7 @@ export default class Book extends React.Component {
   constructor() {
     super();
     this.state = { hasUploadedImage: false };
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
   redirectToBook = (e) => {
@@ -13,15 +14,29 @@ export default class Book extends React.Component {
 
   uploadImage() {
     document.getElementById(`uploadBookImg-${this.props.id}`).click();
-    document.getElementById(`uploadBookImg-${this.props.id}`).addEventListener("change", () => {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        const uploaded_image = reader.result;
-        document.getElementById(
-          "bookImg"
-        ).style.backgroundImage = `url(${uploaded_image})`;
+    document
+      .getElementById(`uploadBookImg-${this.props.id}`)
+      .addEventListener("input", (e) => {
+        console.log(e.target.files);
+        // creates file URL for uploaded image
+        console.log(URL.createObjectURL(e.target.files[0]).split("/")[3]);
+        // if(e.target.files.length) {
+        // }
       });
-    });
+    // document
+    //   .getElementById(`uploadBookImg-${this.props.id}`)
+    //   .addEventListener("input", (e) => {
+    //     console.log(e.target.files);
+    //   });
+    // document.getElementById(`uploadBookImg-${this.props.id}`).addEventListener("change", () => {
+    //   const reader = new FileReader();
+    //   reader.addEventListener("load", () => {
+    //     const uploaded_image = reader.result;
+    //     document.getElementById(
+    //       "bookImg"
+    //     ).style.backgroundImage = `url(${uploaded_image})`;
+    //   });
+    // });
 
     this.setState({ hasUploadedImage: true });
   }
@@ -40,7 +55,7 @@ export default class Book extends React.Component {
             id={`uploadButton-${this.props.id}`}
             onClick={this.uploadImage}
           >
-            Upload Book Image
+            Upload Image
           </button>
           <img id="bookImg" className="bookImg" />
         </div>
