@@ -5,11 +5,13 @@ import BookPage from "./pages/BookPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function App() {
+export default function App() {
   const [currentBookId, setCurrentBookId] = useState("/");
+  
   useEffect(() => {
     console.log(currentBookId);
   }, [currentBookId]);
+
   return (
     <div>
       <div className="textColorOne headerSize">
@@ -21,8 +23,7 @@ function App() {
             path="/"
             element={
               <Home
-                setCurrentBookId={setCurrentBookId}
-                currentBookId={currentBookId}
+                bookState={[currentBookId, setCurrentBookId]}
               />
             }
           />
@@ -35,5 +36,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

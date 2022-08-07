@@ -86,12 +86,12 @@ ul li {
   background-position: center;
   background-size: cover;
   border: 1px solid black;
-  width: 100px;
-  height: 50px;
+  /* width: 20%; */
+  /* height: 50px; */
 }
 
-.hideImg {
+/* .hideImg {
   display: none;
-}
+} */
 @media screen and (min-width: 481px) {
 }
