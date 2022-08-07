@@ -10,7 +10,7 @@ export default class Book extends React.Component {
   }
 
   redirectToBook = (e) => {
-    this.props.setCurrentBookId(this.props.id);
+    this.props.bookState[1](this.props.id);
     window.location.pathname = `/book`;
   };
 

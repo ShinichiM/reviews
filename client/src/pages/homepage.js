@@ -26,7 +26,7 @@ const Home = (props) => {
               author={item.author}
               id={item.id}
               key={item.id}
-              boookState={[props.bookState[0], props.bookState[1]]}
+              bookState={[props.bookState[0], props.bookState[1]]}
             />
           );
         });
