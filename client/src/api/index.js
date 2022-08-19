@@ -1,5 +1,4 @@
 async function addBook(req, res) {
-  console.log("--- testing ---", req);
   const response = await fetch("api/book", {
     method: "POST",
     headers: {
@@ -13,7 +12,7 @@ async function addBook(req, res) {
   } else {
     console.error("invalid request");
   }
-};
+}
 
 async function getBookData() {
   const response = await fetch("api/book", {
@@ -24,6 +23,6 @@ async function getBookData() {
     },
   });
   return response.json();
-};
+}
 
 module.exports = { addBook, getBookData };

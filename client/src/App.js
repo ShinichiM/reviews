@@ -7,25 +7,19 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   const [currentBookId, setCurrentBookId] = useState("/");
-  
+
   useEffect(() => {
     console.log(currentBookId);
   }, [currentBookId]);
 
   return (
     <div>
-      <div className="textColorOne headerSize">
-        <Header />
-      </div>
+      <Header />
       <Router>
         <Routes>
           <Route
             path="/"
-            element={
-              <Home
-                bookState={[currentBookId, setCurrentBookId]}
-              />
-            }
+            element={<Home bookState={[currentBookId, setCurrentBookId]} />}
           />
           <Route
             path={`/book/`}

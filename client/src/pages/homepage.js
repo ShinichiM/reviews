@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Book from "../components/Book";
 import { addBook, getBookData } from "../api";
+import "../App.css";
 
 function Home(props) {
   const [bookData, setBookData] = useState([]);
@@ -9,19 +10,21 @@ function Home(props) {
 
   useEffect(() => {
     getBookData("api/book")
-      .then((data) => {
-        // console.log("ithis is the data? 0- ", data);
-        const elements = data.map((item) => {
-          return (
+      .then((bookArr) => {
+        console.log(bookArr);
+
+        let elements = [];
+        for (let i = bookArr.length - 1; i > 0; i--) {
+          elements.push(
             <Book
-              title={item.title}
-              author={item.author}
-              id={item.id}
-              key={item.id}
+              title={bookArr[i].title}
+              author={bookArr[i].author}
+              id={bookArr[i].id}
+              key={bookArr[i].id}
               bookState={[props.bookState[0], props.bookState[1]]}
             />
           );
-        });
+        }
         setBookData(elements);
       })
       .catch(console.error);
@@ -42,37 +45,34 @@ function Home(props) {
         title: inputTitle,
       },
     };
-    console.log(req);
     addBook(req);
-    // event.preventDefault();
-    // window.location.replace("/");
   }
 
   if (window.location.pathname === "/") {
     return (
       <div>
-        <form onSubmit={bookSubmitHandler}>
-          <label>
-            Title:{" "}
-            <input
-              type="text"
-              value={inputTitle}
-              onChange={handleInputTitleChange}
-            ></input>
-          </label>
-          <br />
-          <label>
-            Author:{" "}
-            <input
-              type="text"
-              value={inputAuth}
-              onChange={handleInputAuthChange}
-            ></input>
-          </label>
-          <br />
-          <input type="submit" value="Add Book" />
-        </form>
-        testing
+        <div className="formContainer">
+          <form onSubmit={bookSubmitHandler}>
+            <label>
+              <input
+                type="text"
+                value={inputTitle}
+                onChange={handleInputTitleChange}
+                placeholder="Title"
+              ></input>
+            </label>
+            <label>
+              <input
+                type="text"
+                value={inputAuth}
+                onChange={handleInputAuthChange}
+                placeholder="Author"
+              ></input>
+            </label>
+            <br />
+            <input type="submit" value="Add Book" />
+          </form>
+        </div>
         {bookData}
       </div>
     );

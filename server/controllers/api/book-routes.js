@@ -26,22 +26,22 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Book.update(req.body, {
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
     .then((bookData) => {
       if (bookData[0]) {
         res.json(bookData[0]);
       } else {
-        res.status(404).json({ message: "No book found with this ID."});
+        res.status(404).json({ message: "No book found with this ID." });
         return;
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    })
-})
+    });
+});
 
 router.delete("/:id", (req, res) => {
   Book.destroy({ where: { id: req.params.id } })

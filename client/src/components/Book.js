@@ -11,10 +11,10 @@ function Book(props) {
 
   return (
     <div className="card" id={props.id}>
-      <article onClick={redirectToBook}>
+      <div onClick={redirectToBook}>
         <h3>Title: {props.title}</h3>
         <h4>Author: {props.author}</h4>
-      </article>
+      </div>
     </div>
   );
 }
