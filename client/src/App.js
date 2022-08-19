@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Homepage";
-import Header from "./pages/Header";
+import Header from "./components/Header";
 import BookPage from "./pages/BookPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";

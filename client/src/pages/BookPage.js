@@ -1,7 +1,7 @@
 import React from "react";
 
-export default class BookPage extends React.Component {
-  render() {
-    return <div>Testing 12345 This is the Book Page!!</div>;
-  }
+function BookPage(props) {
+  return <div>Testing 12345 This is the Book Page!!</div>;
 }
+
+export default BookPage;

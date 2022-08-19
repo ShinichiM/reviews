@@ -1,19 +1,11 @@
 import { React, useEffect, useState } from "react";
 import Book from "../components/Book";
+import { addBook, getBookData } from "../api";
 
-const Home = (props) => {
+function Home(props) {
   const [bookData, setBookData] = useState([]);
-
-  const getBookData = async function (url) {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    return response.json();
-  };
+  const [inputAuth, setInputAuth] = useState("");
+  const [inputTitle, setInputTitle] = useState("");
 
   useEffect(() => {
     getBookData("api/book")
@@ -31,17 +23,62 @@ const Home = (props) => {
           );
         });
         setBookData(elements);
-
-        // console.log("this is book data - ", bookData);
       })
       .catch(console.error);
   }, []);
 
+  function handleInputAuthChange(event) {
+    setInputAuth(event.target.value);
+  }
+
+  function handleInputTitleChange(event) {
+    setInputTitle(event.target.value);
+  }
+
+  function bookSubmitHandler(event) {
+    const req = {
+      body: {
+        author: inputAuth,
+        title: inputTitle,
+      },
+    };
+    console.log(req);
+    addBook(req);
+    // event.preventDefault();
+    // window.location.replace("/");
+  }
+
   if (window.location.pathname === "/") {
-    return <div>testing {bookData}</div>;
+    return (
+      <div>
+        <form onSubmit={bookSubmitHandler}>
+          <label>
+            Title:{" "}
+            <input
+              type="text"
+              value={inputTitle}
+              onChange={handleInputTitleChange}
+            ></input>
+          </label>
+          <br />
+          <label>
+            Author:{" "}
+            <input
+              type="text"
+              value={inputAuth}
+              onChange={handleInputAuthChange}
+            ></input>
+          </label>
+          <br />
+          <input type="submit" value="Add Book" />
+        </form>
+        testing
+        {bookData}
+      </div>
+    );
   } else {
     return <div>ERROR</div>;
   }
-};
+}
 
 export default Home;
